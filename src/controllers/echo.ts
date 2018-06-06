@@ -1,4 +1,8 @@
-import { Request, Response } from 'express'
-export function echo(req: Request, res: Response) {
-  res.json(req.query)
-}
+import { Router, Request, Response } from 'express'
+const router = Router()
+
+router.get('/', (req: Request, res: Response) => {
+    res.json(req.query)
+})
+
+module.exports = router

@@ -1,4 +1,7 @@
 import * as express from 'express'
+
+require('./models/connection')()
+
 const app = express()
 
 app.use(require('./controllers'))

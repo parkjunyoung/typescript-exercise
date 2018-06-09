@@ -1,8 +1,19 @@
 import * as express from 'express'
+import * as path from 'path'
+import * as logger from 'morgan'
+import * as bodyParser from 'body-parser'
 
 require('./models/connection')()
 
 const app = express()
+
+app.set('views', path.join(__dirname, '../views'))
+app.set('view engine', 'ejs')
+
+// 미들웨어 셋팅
+app.use(logger('dev'))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }))
 
 app.use(require('./controllers'))
 

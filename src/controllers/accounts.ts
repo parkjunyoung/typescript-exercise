@@ -12,15 +12,15 @@ router.get('/join', (req: Request, res: Response) => {
     res.render('accounts/join');
 });
 
-router.post('/join', (req: Request, res: Response) => {
+router.post('/join', async (req: Request, res: Response) => {
     const User: Users = new UsersModel({
         username : req.body.username,
         password : passwordHash(req.body.password),
         displayname : req.body.displayname
     });
-    User.save( () => {
-        res.send('<script>alert("회원가입 성공");location.href="/accounts/login";</script>');
-    });
+    await User.save()
+    res.send('<script>alert("회원가입 성공");location.href="/accounts/login";</script>')
+    
 });
 
 router.get('/login', (req: Request, res: Response) => {

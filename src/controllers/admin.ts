@@ -1,5 +1,6 @@
 import { Router , Request , Response } from 'express'
 import { ProductsModel } from '../models/ProductsModel'
+import { Products } from '../interfaces/Products'
 const router = Router()
 
 router.get('/' , (req: Request, res: Response) => {
@@ -18,7 +19,7 @@ router.get('/products/write', (req: Request, res: Response) => {
 })
 
 router.post('/products/write', async(req: Request, res: Response) => {
-    const product = new ProductsModel({
+    const product: Products = new ProductsModel({
         name : req.body.name,
         price : req.body.price,
         description : req.body.description

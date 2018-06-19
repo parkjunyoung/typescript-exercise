@@ -7,5 +7,6 @@ router.get('/', (req: Request, res: Response) => {
 
 router.use('/echo', require('./echo'))
 router.use('/admin', require('./admin'))
+router.use('/accounts', require('./accounts'))
 
 module.exports = router
